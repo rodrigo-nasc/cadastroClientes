@@ -1,0 +1,87 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    background-color: orange;
+    padding: 6px;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+}
+
+th {
+    width: 19%;
+    background-color: orange;
+    padding: 10px;
+}
+
+.container {
+    width: 90%;
+    border: 1px solid black;
+    margin: 0 auto;
+    background-color: rgb(247, 245, 231);
+    padding: 10px;
+    height: 70vh;
+}
+
+.container-opacity {
+    opacity: 0.1;
+}
+
+#add-cliente {
+    background-color: rgb(126, 126, 237);
+    padding: 8px 15px;
+    color: white;
+    font-weight: bold;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+}
+
+#campo-busca {
+    width: 20%;
+}
+
+.editar {
+    padding: 8px 18px;
+    background-color: rgb(79, 173, 70);
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.editar:hover {
+    background-color: rgb(71, 236, 56);
+}
+
+.excluir {
+    padding: 8px 18px;
+    font-weight: bold;
+    background-color: rgb(138, 22, 22);
+    cursor: pointer;
+    border: none;
+    color: white;
+}
+
+.excluir:hover {
+    background-color: red;
+}
+
+.cliente {
+    list-style: none;
+}
+
+.container2 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 200px;
+}
+
+.botoes {
+    display: flex;
+    justify-content: space-evenly;
+}

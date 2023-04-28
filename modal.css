@@ -1,0 +1,63 @@
+.modal {
+    width: 40%;
+    margin: 0 auto;
+    border: 1px solid black;
+    background-color: rgb(242, 222, 163);
+    padding: 10px;
+}
+
+#form {
+    padding: 10px;
+}
+
+.inputs {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+input {
+    width: 45%;
+    padding: 7px;
+    margin: 0.2rem;
+}
+
+input::placeholder {
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.mensagem-erro {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px;
+}
+
+#adicionar {
+    background-color: rgb(116, 209, 104);
+    padding: 8px 15px;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+#cancelar {
+    background-color: rgb(126, 126, 237);
+    color: white;
+    padding: 8px 15px;
+    font-weight: bold;
+    border: none;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.aparecer {
+    display: block;
+}
+
+.esconde {
+    display: none;
+}

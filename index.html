@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="/style.css" />
+        <link rel="stylesheet" href="/modal.css" />
+    </head>
+    <body>
+        <main class="container">
+            <h1>Cadastro de Clientes</h1>
+
+            <button id="add-cliente">Adicionar Cliente</button>
+
+            <div>
+                <input type="text" id="campo-busca" placeholder="Digite o nome desejado" />
+            </div>
+
+            <ul class="lista-clientes"></ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Celular</th>
+                        <th>Cidade</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+
+                <tbody class="corpo-tabela"></tbody>
+            </table>
+        </main>
+
+        <section class="container2">
+            <div class="modal esconde" id="caixa-modal">
+                <div class="inputs">
+                    <input type="text" id="nome" name="nome" placeholder="Digite o seu nome" />
+                    <input type="email" id="email" name="email" placeholder="Digite o seu email" />
+                    <input type="tel" id="celular" name="celular" placeholder="Digite o seu celular" />
+                    <input type="text" id="cidade" name="cidade" placeholder="Digite a sua cidade" />
+                </div>
+
+                <div class="mensagem-erro">
+                    <span class="buttons">
+                        <button type="submit" id="adicionar">Salvar</button>
+                        <button id="cancelar">Cancelar</button>
+                    </span>
+
+                    <span class="error"></span>
+                </div>
+            </div>
+        </section>
+
+        <script src="/adicionar.js"></script>
+        <script src="/deletar.js"></script>
+        <script src="/filtrar.js"></script>
+    </body>
+</html>
