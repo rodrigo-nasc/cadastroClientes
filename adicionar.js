@@ -26,170 +26,176 @@ console.log(clientes);
 let novaLinha = null;
 
 adicionaCliente.addEventListener("click", () => {
-  if (nome.value && email.value && celular.value && cidade.value) {
-    if (novaLinha) {
-      const index = novaLinha.dataset.index;
-      console.log(index);
+    if (nome.value && email.value && celular.value && cidade.value) {
+        if (novaLinha) {
+            const index = novaLinha.dataset.index;
+            console.log(index);
 
-      clientes[index] = {
-        nome: nome.value,
-        email: email.value,
-        celular: celular.value,
-        cidade: cidade.value,
-      };
+            clientes[index] = {
+                nome: nome.value,
+                email: email.value,
+                celular: celular.value,
+                cidade: cidade.value,
+            };
 
-      salvarClientes(clientes);
+            salvarClientes(clientes);
 
-      novaLinha.querySelector(".info-nome").innerText = nome.value;
-      novaLinha.querySelector(".info-email").innerText = email.value;
-      novaLinha.querySelector(".info-celular").innerText = celular.value;
-      novaLinha.querySelector(".info-cidade").innerText = cidade.value;
-      alert("Atualizado com sucesso");
+            novaLinha.querySelector(".info-nome").innerText = nome.value;
+            novaLinha.querySelector(".info-email").innerText = email.value;
+            novaLinha.querySelector(".info-celular").innerText = celular.value;
+            novaLinha.querySelector(".info-cidade").innerText = cidade.value;
+            alert("Atualizado com sucesso");
 
-      novaLinha = null;
+            novaLinha = null;
 
-      escondeModal();
-      container.classList.remove("container-opacity");
+            escondeModal();
+            container.classList.remove("container-opacity");
+        } else {
+            validaEmail(clientes);
+        }
+        nome.value = "";
+        email.value = "";
+        celular.value = "";
+        cidade.value = "";
     } else {
-      validaEmail(clientes);
+        erro.textContent = "Preencha todos os campos";
+        erro.classList.remove("esconde");
+        erro.classList.add("aparece");
     }
+});
+
+adicionar.addEventListener("click", () => {
+    mostrarModal();
+    container.classList.add("container-opacity");
+});
+
+cancela.addEventListener("click", () => {
+    escondeModal();
+    erro.classList.add("esconde");
+    container.classList.remove("container-opacity");
+    novaLinha = null;
     nome.value = "";
     email.value = "";
     celular.value = "";
     cidade.value = "";
-  } else {
-    erro.textContent = "Preencha todos os campos";
-    erro.classList.remove("esconde");
-    erro.classList.add("aparece");
-  }
-});
-
-adicionar.addEventListener("click", () => {
-  mostrarModal();
-  container.classList.add("container-opacity");
-});
-
-cancela.addEventListener("click", () => {
-  escondeModal();
-  erro.classList.add("esconde");
-  container.classList.remove("container-opacity");
-  novaLinha = null;
-  nome.value = "";
-  email.value = "";
-  celular.value = "";
-  cidade.value = "";
 });
 
 function dadosCliente() {
-  let cliente = {
-    nome: nome.value,
-    email: email.value,
-    celular: celular.value,
-    cidade: cidade.value,
-  };
+    let cliente = {
+        nome: nome.value,
+        email: email.value,
+        celular: celular.value,
+        cidade: cidade.value,
+    };
 
-  clientes.push(cliente);
+    clientes.push(cliente);
 
-  salvarClientes(clientes);
+    salvarClientes(clientes);
 
-  console.log(clientes);
+    console.log(clientes);
 
-  mostrarClientes();
+    mostrarClientes();
 }
 
 function mostrarClientes() {
-  let corpoTabela = document.querySelector(".corpo-tabela");
-  corpoTabela.innerHTML = "";
+    let corpoTabela = document.querySelector(".corpo-tabela");
+    corpoTabela.innerHTML = "";
 
-  clientes.forEach((cliente, index) => {
-    const novoCliente = document.createElement("tr");
-    novoCliente.className = "cliente";
-    novoCliente.dataset.index = index;
+    clientes.forEach((cliente, index) => {
+        const novoCliente = document.createElement("tr");
+        novoCliente.className = "cliente";
+        novoCliente.dataset.index = index;
 
-    const valorNome = document.createElement("td");
-    valorNome.textContent = cliente.nome;
-    valorNome.className = "info-nome";
+        const valorNome = document.createElement("td");
+        valorNome.textContent = cliente.nome;
+        valorNome.className = "info-nome";
 
-    const valorEmail = document.createElement("td");
-    valorEmail.textContent = cliente.email;
-    valorEmail.className = "info-email";
+        const valorEmail = document.createElement("td");
+        valorEmail.textContent = cliente.email;
+        valorEmail.className = "info-email";
 
-    const valorCelular = document.createElement("td");
-    valorCelular.textContent = cliente.celular;
-    valorCelular.className = "info-celular";
+        const valorCelular = document.createElement("td");
+        valorCelular.textContent = cliente.celular;
+        valorCelular.className = "info-celular";
 
-    const valorCidade = document.createElement("td");
-    valorCidade.textContent = cliente.cidade;
-    valorCidade.className = "info-cidade";
+        const valorCidade = document.createElement("td");
+        valorCidade.textContent = cliente.cidade;
+        valorCidade.className = "info-cidade";
 
-    const buttons = document.createElement("span");
-    buttons.className = "botoes";
+        const buttons = document.createElement("span");
+        buttons.className = "botoes";
 
-    const editar = document.createElement("button");
-    editar.textContent = "Editar";
-    editar.className = "editar";
-    editar.dataset.index = index;
+        const editar = document.createElement("button");
+        editar.textContent = "Editar";
+        editar.className = "editar";
+        editar.dataset.index = index;
 
-    editar.addEventListener("click", () => {
-      mostrarModal();
-      novaLinha = novoCliente;
-      nome.value = valorNome.textContent;
-      email.value = valorEmail.textContent;
-      celular.value = valorCelular.textContent;
-      cidade.value = valorCidade.textContent;
+        editar.addEventListener("click", () => {
+            mostrarModal();
+            novaLinha = novoCliente;
+            nome.value = valorNome.textContent;
+            email.value = valorEmail.textContent;
+            celular.value = valorCelular.textContent;
+            cidade.value = valorCidade.textContent;
 
-      container.classList.add("container-opacity");
+            container.classList.add("container-opacity");
+        });
+
+        const excluir = document.createElement("button");
+        excluir.textContent = "Excluir";
+        excluir.className = "excluir";
+        excluir.dataset.index = index;
+
+        buttons.append(editar, excluir);
+
+        novoCliente.append(valorNome, valorEmail, valorCelular, valorCidade, buttons);
+        corpoTabela.appendChild(novoCliente);
     });
 
-    const excluir = document.createElement("button");
-    excluir.textContent = "Excluir";
-    excluir.className = "excluir";
-    excluir.dataset.index = index;
+    const botoesExcluir = document.querySelectorAll(".excluir");
+    botoesExcluir.forEach((botao) => {
+        botao.addEventListener("click", (event) => {
+            const index = event.target.dataset.index;
+            const confirmacao = confirm("Deseja excluir cliente " + clientes[index].nome + "?");
 
-    buttons.append(editar, excluir);
-
-    novoCliente.append(valorNome, valorEmail, valorCelular, valorCidade, buttons);
-    corpoTabela.appendChild(novoCliente);
-  });
-
-  const botoesExcluir = document.querySelectorAll(".excluir");
-  botoesExcluir.forEach((botao) => {
-    botao.addEventListener("click", (event) => {
-      const index = event.target.dataset.index;
-      removerCliente(index);
-      alert("Cliente removido");
+            if (confirmacao) {
+                alert("Cliente " + clientes[index].nome + " removido");
+                removerCliente(index);
+            } else {
+                alert("Voltando a tela de cadastro");
+            }
+        });
     });
-  });
 }
 
 function mostrarModal() {
-  modal.classList.remove("esconde");
-  modal.classList.add("aparece");
+    modal.classList.remove("esconde");
+    modal.classList.add("aparece");
 }
 
 function escondeModal() {
-  modal.classList.add("esconde");
-  modal.classList.remove("aparece");
+    modal.classList.add("esconde");
+    modal.classList.remove("aparece");
 }
 
 function removerCliente(index) {
-  clientes.splice(index, 1);
-  salvarClientes(clientes);
-  mostrarClientes();
+    clientes.splice(index, 1);
+    salvarClientes(clientes);
+    mostrarClientes();
 }
 
 function salvarClientes(clientes) {
-  localStorage.setItem("clientes", JSON.stringify(clientes));
+    localStorage.setItem("clientes", JSON.stringify(clientes));
 }
 
 function validaEmail(clientes) {
-  const clienteExistente = clientes.find((cliente) => cliente.email === email.value);
-  if (clienteExistente) {
-    alert("Esse e-mail já existe");
-  } else {
-    dadosCliente();
-    escondeModal();
-    container.classList.remove("container-opacity");
-    erro.classList.add("esconde");
-  }
+    const clienteExistente = clientes.find((cliente) => cliente.email === email.value);
+    if (clienteExistente) {
+        alert("Esse e-mail já existe");
+    } else {
+        dadosCliente();
+        escondeModal();
+        container.classList.remove("container-opacity");
+        erro.classList.add("esconde");
+    }
 }
