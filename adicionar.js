@@ -51,10 +51,15 @@ adicionaCliente.addEventListener("click", () => {
       escondeModal();
       container.classList.remove("container-opacity");
     } else {
-      dadosCliente();
-      escondeModal();
-      container.classList.remove("container-opacity");
-      erro.classList.add("esconde");
+      const clienteExistente = clientes.find((cliente) => cliente.email === email.value);
+      if (clienteExistente) {
+        alert("Esse e-mail já existe");
+      } else {
+        dadosCliente();
+        escondeModal();
+        container.classList.remove("container-opacity");
+        erro.classList.add("esconde");
+      }
     }
     nome.value = "";
     email.value = "";
