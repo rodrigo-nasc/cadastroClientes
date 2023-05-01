@@ -88,13 +88,24 @@ function dadosCliente() {
         cidade: cidade.value,
     };
 
-    clientes.push(cliente);
+    const confirmacao = confirm(`
+  Deseja cadastrar o cliente:
+  Nome: ${cliente.nome}
+  Email: ${cliente.email}
+  Celular: ${cliente.celular}
+  Cidade: ${cliente.cidade}`);
 
-    salvarClientes(clientes);
+    if (confirmacao) {
+        clientes.push(cliente);
 
-    console.log(clientes);
+        salvarClientes(clientes);
 
-    mostrarClientes();
+        console.log(clientes);
+
+        mostrarClientes();
+    } else {
+        alert("Cliente não cadastrado");
+    }
 }
 
 function mostrarClientes() {
