@@ -51,15 +51,7 @@ adicionaCliente.addEventListener("click", () => {
       escondeModal();
       container.classList.remove("container-opacity");
     } else {
-      const clienteExistente = clientes.find((cliente) => cliente.email === email.value);
-      if (clienteExistente) {
-        alert("Esse e-mail já existe");
-      } else {
-        dadosCliente();
-        escondeModal();
-        container.classList.remove("container-opacity");
-        erro.classList.add("esconde");
-      }
+      validaEmail(clientes);
     }
     nome.value = "";
     email.value = "";
@@ -188,4 +180,16 @@ function removerCliente(index) {
 
 function salvarClientes(clientes) {
   localStorage.setItem("clientes", JSON.stringify(clientes));
+}
+
+function validaEmail(clientes) {
+  const clienteExistente = clientes.find((cliente) => cliente.email === email.value);
+  if (clienteExistente) {
+    alert("Esse e-mail já existe");
+  } else {
+    dadosCliente();
+    escondeModal();
+    container.classList.remove("container-opacity");
+    erro.classList.add("esconde");
+  }
 }
