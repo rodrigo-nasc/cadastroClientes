@@ -200,9 +200,12 @@ function salvarClientes(clientes) {
 }
 
 function validaEmail(clientes) {
-    const clienteExistente = clientes.find((cliente) => cliente.email === email.value);
-    if (clienteExistente) {
+    const emailExistente = clientes.find((cliente) => cliente.email === email.value);
+    const celularExistente = clientes.find((cliente) => cliente.celular === celular.value);
+    if (emailExistente) {
         alert("Esse e-mail já existe");
+    } else if (celularExistente) {
+        alert("Celular já existe");
     } else {
         dadosCliente();
         escondeModal();
